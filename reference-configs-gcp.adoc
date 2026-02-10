@@ -1,0 +1,200 @@
+---
+sidebar: sidebar 
+permalink: reference-configs-gcp.html 
+keywords: google, gcp, google cloud platform, explore, standard, premium, byol, paygo, disks, supported, capacity, machine types, sizes, HA, high availability, HA pairs 
+summary: Google Cloud 支援多種 Cloud Volumes ONTAP 組態。 
+---
+= Google Cloud 中 Cloud Volumes ONTAP 支援的組態
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Google Cloud 支援多種 Cloud Volumes ONTAP 組態。
+
+
+
+== 授權支援的組態
+
+Cloud Volumes ONTAP 在 Google Cloud 中既可以作為單節點系統使用，也可以作為高可用性（HA）節點對使用，以實現容錯和不間斷操作。
+
+不支援將單節點系統升級為 HA 配對。如果您想在單節點系統和 HA 配對之間切換，則需要部署新系統，並將資料從現有系統複寫到新系統。
+
+Cloud Volumes ONTAP 可以在雲端供應商提供的預留或隨需 VM 執行個體上執行。不支援使用其他 VM 執行個體類型的解決方案。
+
+[role="tabbed-block"]
+====
+.基於容量的授權
+--
+[cols="h,d,d,d"]
+|===
+|  | 免費增值 | 最佳化 ^4^ | 基於容量的授權（Essentials 和 Professional） 
+
+
+| 系統最大容量（磁碟 + 物件儲存） | 500 GiB  a| 
+採用容量型授權時，每個 Cloud Volumes ONTAP 系統都支援分層至物件儲存設備。分層容量總計可擴充至雲端供應商的儲存區限制。雖然授權不會限制容量，但您仍應遵循 https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["FabricPool 最佳實踐"^]以確保在設定和管理分層時達到最佳效能、可靠性和成本效益。
+
+
+
+| 支援的機器類型 ^1^  a| 
+* n1-standard-8 ^1^
+* n1-standard-32 ^1^
+* n2-standard-4
+* n2-standard-8
+* n2-standard-16
+* n2-standard-32
+* n2-standard-48
+* n2-standard-64
+
+ a| 
+* n2-standard-4
+* n2-standard-8
+
+ a| 
+* n1-standard-8 ^1^
+* n1-standard-32 ^1^
+* n2-standard-4
+* n2-standard-8
+* n2-standard-16
+* n2-standard-32
+* n2-standard-48
+* n2-standard-64
+
+
+
+
+| 支援的磁碟類型 ^2^ 3+| 平衡型持久性磁碟 ^3^ 、效能型（SSD）持久性磁碟 ^3^ 和標準型（HDD）持久性磁碟。 
+|===
+附註：
+
+. ^1^ 在 NetApp Console 上部署 Google Cloud 中新的 Cloud Volumes ONTAP 執行個體時，將不再提供 n1 系列虛擬機器選項。n1 系列虛擬機器將僅在舊版現有系統中保留並提供支援。Google Cloud 僅支援從 9.8 版本開始部署新的 Cloud Volumes ONTAP。我們建議您切換到與 Cloud Volumes ONTAP 9.8 及更高版本相容的 n2 系列虛擬機器。但是，n1 系列虛擬機器仍可用於透過 API 進行的新部署。
++
+新版 Cloud Volumes ONTAP 系統不再支援 custom-4-16384 機器類型。如果您現有的系統在此機器類型上執行，您可以繼續使用，但我們建議切換至 n2-standard-4 機器類型。
+
+. ^2^ 磁碟限制可能會阻止您僅使用磁碟達到系統最大容量限制。您可以透過 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["將非作用中資料分層至物件儲存設備"^]達到容量限制。
++
+link:reference-limits-gcp.html["深入瞭解 Google Cloud 中的磁碟限制"]。
+
+. ^3^ 使用平衡型持久性磁碟和高效能 （SSD） 持久性磁碟時、可啟用增強的寫入效能。
++
+從 Cloud Volumes ONTAP 9.13.0 開始、以下 HA 配對部署執行個體可使用 _Flash Cache_ 、高寫入速度、以及 8,896 位元組的較高最大傳輸單元（MTU）：
+
++
+** n2-standard-16
+** n2-standard-32
+** n2-standard-48
+** n2-standard-64
++
+部署符合條件的執行個體類型時、您可以啟用 _Flash Cache_ 和高寫入速度。若要啟用 8,896 位元組的較高最大傳輸單元、您必須為部署選擇 VPC-1 、 VPC-2 或 VPC-3 。較高的 MTU 可實現較高的網路處理量。如需啟動其中一項部署的詳細資訊、請參閱 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html#launching-an-ha-pair-in-google-cloud["在 Google Cloud 中啟動 HA 配對"]。
+
++
+
+NOTE: _Flash 快取_、高寫入模式和 8,896 的 MTU 是功能相關的，不能在已配置的執行個體中單獨停用。
+
+
+
+. ^4^ 自 2025 年 8 月 11 日起，Cloud Volumes ONTAP Optimized 授權將被棄用，並且將不再在 Google Cloud marketplace 中提供按需付費（PAYGO）訂閱的購買或續約服務。有關詳細信息，請參閱 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP 的新功能"^]。
+
+
+--
+.基於節點的授權
+--
+[cols="h,d,d,d,d"]
+|===
+|  | PAYGO Explore | PAYGO Standard | PAYGO Premium | 基於節點的 BYOL 
+
+
+| 系統最大容量（磁碟 + 物件儲存） | 2 TB ^2^ | 10 TiB | 368 TiB | 每個授權 368 TiB 
+
+
+| 支援的機器類型 ^3^  a| 
+* n2-standard-4
+
+ a| 
+* n1-standard-8 ^3^
+* n2-standard-8
+
+ a| 
+* n1-standard-32 ^3^
+* n2-standard-16
+* n2-standard-32
+* n2-standard-48
+* n2-standard-64
+
+ a| 
+* n1-standard-8 ^3^
+* n1-standard-32 ^3^
+* n2-standard-4
+* n2-standard-8
+* n2-standard-16
+* n2-standard-32
+* n2-standard-48
+* n2-standard-64
+
+
+
+
+| 支援的磁碟類型 4+| 平衡型持久性磁碟 ^4^、高效能（SSD）持久性磁碟 ^4^ 和標準型（HDD）持久性磁碟。 
+|===
+附註：
+
+. ^1^ 磁碟限制可能會阻止您僅使用磁碟達到系統最大容量限制。您可以透過 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["將非作用中資料分層至物件儲存設備"^]達到容量限制。
++
+link:reference-limits-gcp.html["深入瞭解 Google Cloud 中的磁碟限制"]。
+
+. ^2^ PAYGO Explore 不支援將資料分層至 Google Cloud Storage。
+. ^3^ 在 Google Cloud 中部署新的 Cloud Volumes ONTAP 執行個體時，NetApp Console 將不再提供 n1 系列虛擬機器選項。n1 系列虛擬機器將僅在舊版現有系統中保留並提供支援。Google Cloud 僅支援從 9.8 版本開始部署新的 Cloud Volumes ONTAP。我們建議您切換到與 Cloud Volumes ONTAP 9.8 及更高版本相容的 n2 系列虛擬機器。但是，n1 系列虛擬機器仍可用於透過 API 執行的新部署。
++
+新版 Cloud Volumes ONTAP 系統不再支援 custom-4-16384 機器類型。如果您現有的系統在此機器類型上執行，您可以繼續使用，但我們建議切換至 n2-standard-4 機器類型。
+
+. ^4^ 使用平衡持久性磁碟和效能 （SSD） 持久性磁碟時，可啟用增強的寫入效能。
+
+
+NetApp Console 顯示標準版和 BYOL 新增了一種支援的機器類型：n1-highmem-4。但是，這種機器類型不適用於正式作業環境。我們僅將其用於特定的實驗室環境。
+
+從 Cloud Volumes ONTAP 軟體版本 9.13.0 開始，以下 HA 配對部署執行個體可使用 _Flash Cache_、高寫入速度和更高的最大傳輸單元（MTU）8,896 位元組：
+
+* n2-standard-16
+* n2-standard-32
+* n2-standard-48
+* n2-standard-64
+
+
+部署符合條件的執行個體類型時、您可以啟用 _Flash Cache_ 和高寫入速度。若要啟用 8,896 位元組的較高最大傳輸單元、您必須為部署選擇 VPC-1 、 VPC-2 或 VPC-3 。較高的 MTU 可實現較高的網路處理量。如需啟動其中一項部署的詳細資訊、請參閱 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html#launching-an-ha-pair-in-google-cloud["在 Google Cloud 中啟動 HA 配對"]。
+
+
+NOTE: _Flash 快取_、高寫入模式和 8,896 的 MTU 是功能相關的，不能在已配置的執行個體中單獨停用。
+
+--
+====
+如需特定機器類型的詳細資訊，請參閱 Google Cloud 說明文件：
+
+* https://cloud.google.com/compute/docs/general-purpose-machines#n1_machines["n1 系列通用型機器類型"^]
+* https://cloud.google.com/compute/docs/general-purpose-machines#n2_series["N2 系列通用型機器類型"^]
+
+
+
+
+== 支援的磁碟大小
+
+在 Google Cloud 中，一個 Aggregate 最多可以包含 6 個相同類型和大小的磁碟。支援以下磁碟大小：
+
+* 100 GB
+* 500 GB
+* 1 TB
+* 2 TB
+* 4 TB
+* 8 TB
+* 16 TB
+* 64 TB
+
+
+
+
+== 支援的地區
+
+如需 Google Cloud 區域支援，請參閱 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes 全球區域"^]。

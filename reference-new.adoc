@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: reference-new.html 
+keywords: 'what"s new, new, features, release notes, enhancements' 
+summary: Cloud Volumes ONTAP 9.17.1 包含一項新的增強功能。 
+---
+= Cloud Volumes ONTAP 9.17.1 的新增功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 9.17.1 包含新的增強功能。
+
+最新版本的 NetApp Console 也引進了新的 Cloud Volumes ONTAP 功能。如需更多資訊、請參閱 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP"^]在 Console 中管理的新功能。
+
+
+
+== 9.17.1 P3（2025 年 12 月 22 日）
+
+Cloud Volumes ONTAP 9.17.1 P3 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。Console 將提示您將現有系統升級至此修補程式版本。
+
+link:https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab/download/62632/9.17.1P3["檢視 P3 修補程式中已修正的錯誤清單"^]（需要登入 NetApp Support Site）。
+
+
+
+== 9.17.1 P2（2025 年 12 月 4 日）
+
+Cloud Volumes ONTAP 9.17.1 P2 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。Console 將提示您將現有系統升級至此修補程式版本。
+
+link:https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab/download/62632/9.17.1P2["檢視 P2 修補程式中已修復的錯誤清單"^]（需要 NetApp 支援網站登入）。
+
+
+
+== 9.17.1 P1（2025 年 11 月 4 日）
+
+Cloud Volumes ONTAP 9.17.1 P1 修補程式現已可在 AWS、Azure 和 Google Cloud 中部署和升級。Console 將提示您將現有系統升級至此修補程式版本。
+
+link:https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab/download/62632/9.17.1P1["檢視 P1 修補程式中已修正的錯誤清單"^]（需要登入 NetApp Support Site）。
+
+
+
+== 升級說明
+
+請閱讀以下說明，以深入瞭解升級至此版本的相關資訊。
+
+
+
+=== 如何升級
+
+Cloud Volumes ONTAP 的升級必須透過 Console 完成。請勿使用 System Manager 或 CLI 升級 Cloud Volumes ONTAP。否則可能會影響系統穩定性。
+
+link:http://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-cloud.html["了解 Console 通知您時如何進行升級"^]。
+
+
+
+=== 支援的升級路徑
+
+您可以在 AWS、Azure 和 Google Cloud 中將 Cloud Volumes ONTAP 從 9.16.1 版本升級到 9.17.1 P1 版本。Console 將提示您將符合條件的 Cloud Volumes ONTAP 系統升級至此版本。
+
+
+
+=== 停機時間
+
+* 單節點系統的升級會導致系統離線長達 25 分鐘，在此期間 I/O 會中斷。
+* 升級 HA 配對不中斷營運、I/O 不中斷。在此不中斷營運的升級程序期間、每個節點都會串聯升級、以繼續為用戶端提供 I/O。
+
