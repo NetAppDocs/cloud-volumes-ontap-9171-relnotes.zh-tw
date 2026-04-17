@@ -886,4 +886,8 @@
   <block id="0914be2f951ac967ea57e8cf04de3d8a" category="paragraph">Cloud Volumes ONTAP 9.17.1 P5 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。Console 將提示您將現有系統升級到此修補程式版本。</block>
   <block id="e890150484086859b9a5078abe9c6f20" category="inline-link-macro">檢視 P5 修補程式中已修正的錯誤清單</block>
   <block id="58063f638b2fb1a02b64e1b1d04288f3" category="paragraph"><block ref="5b83e391540a70916a5ffdb75019f186" category="inline-link-macro-rx"></block>（需要登入 NetApp Support Site）。</block>
+  <block id="4133eb3a6ce0934c2666f78dc15d8b94" category="section-title">9.17.1 P6（2026 年 4 月 17 日）</block>
+  <block id="c7bcac860b797f27404d6345b36c3e95" category="paragraph">Cloud Volumes ONTAP 9.17.1 P6 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。Console 將提示您將現有系統升級到此修補程式版本。</block>
+  <block id="4d90d21642c7222312363da000d7409f" category="inline-link-macro">檢視 P6 修補程式中已修正的錯誤清單</block>
+  <block id="9cc7d1e306d6a5fe0c2d14528a2bbb0d" category="paragraph"><block ref="d1851ca2607b699d731598b241fc23ed" category="inline-link-macro-rx"></block>（需要登入 NetApp Support Site）。</block>
 </blocks>
