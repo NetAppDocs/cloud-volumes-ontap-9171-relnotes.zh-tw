@@ -18,6 +18,7 @@ Cloud Volumes ONTAP 具有儲存組態限制，以提供可靠的作業。為獲
 
 
 
+[[maximum-system-capacity-by-license]]
 == 依授權的最大系統容量
 
 Cloud Volumes ONTAP 系統的最大系統容量由其授權決定。最大系統容量包括磁碟型儲存設備以及用於資料分層的物件儲存設備。
@@ -26,6 +27,7 @@ NetApp 不支援超過系統容量上限。如果您達到授權容量上限，N
 
 在某些組態中，磁碟限制會導致您無法僅使用磁碟達到容量限制。您可以透過 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["將非作用中資料分層至物件儲存設備"^]達到容量限制。如需更多詳細資料，請參閱以下磁碟限制。
 
+[[cap-license-gcp]]
 .容量型授權的容量限制
 使用基於容量的授權，每個 Cloud Volumes ONTAP 系統都支援分層至物件儲存。分層總容量可擴充至雲端供應商的儲存桶限制。雖然授權不會限制容量，但在配置和管理分層時，您應遵循 https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["FabricPool 最佳實踐"^]以確保最佳效能、可靠性和成本效益。如需詳細資訊，請參閱 https://cloud.google.com/storage/docs/buckets["Google Cloud 文件"^]。
 
@@ -59,6 +61,7 @@ NetApp 不支援超過系統容量上限。如果您達到授權容量上限，N
 
 
 
+[[aggregate-limits]]
 == Aggregate 限制
 
 Cloud Volumes ONTAP 將 Google Cloud Platform 磁碟分組到 _Aggregate_ 中。Aggregate 為磁碟區提供儲存。
@@ -92,6 +95,7 @@ Cloud Volumes ONTAP 將 Google Cloud Platform 磁碟分組到 _Aggregate_ 中。
 
 
 
+[[disk-and-tiering-limits]]
 == 磁碟和分層限制
 
 下表顯示了僅使用磁碟以及使用磁碟並採用冷資料分層儲存到物件儲存時的最大系統容量。磁碟容量限制僅適用於包含使用者資料的磁碟。這些限制不包括開機磁碟、根磁碟或 NVRAM。
@@ -120,6 +124,7 @@ Cloud Volumes ONTAP 將 Google Cloud Platform 磁碟分組到 _Aggregate_ 中。
 
 
 
+[[storage-vm-limits]]
 == Storage VM 限制
 
 某些組態可讓您為 Cloud Volumes ONTAP 建立額外的儲存 VM （ SVM ）。
@@ -164,6 +169,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.
 
 
 
+[[logical-storage-limits]]
 == 邏輯儲存限制
 
 [cols="22,22,56"]
@@ -206,6 +212,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.
 
 
 
+[[iscsi-storage-limits]]
 == iSCSI 儲存限制
 
 [cols="3*"]
@@ -247,6 +254,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.
 |===
 
 
+[[cloud-volumes-ontap-ha-pairs-do-not-support-immediate-storage-giveback]]
 == Cloud Volumes ONTAP HA 配對不支援立即儲存恢復
 
 節點重新開機後，合作夥伴必須先同步資料才能歸還儲存設備。重新同步資料所需的時間取決於節點當機期間用戶端寫入的資料量以及歸還期間的資料寫入速度。
