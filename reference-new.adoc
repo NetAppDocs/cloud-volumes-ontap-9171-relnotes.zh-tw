@@ -20,6 +20,24 @@ Cloud Volumes ONTAP 9.17.1 包含新的增強功能。
 
 
 
+[[9-17-1-p8-22-july-2026]]
+== 9.17.1 P8（2026 年 7 月 22 日）
+
+Cloud Volumes ONTAP 9.17.1 P8 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。主控台將提示您將現有系統升級至此修補程式版本。
+
+link:https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab/download/62632/9.17.1P8["檢視 P8 修補程式中已修正的錯誤清單"^]（需要登入 NetApp Support Site）。
+
+
+
+[[9-17-1-p7-22-july-2026]]
+== 9.17.1 P7（2026 年 7 月 22 日）
+
+Cloud Volumes ONTAP 9.17.1 P7 修補程式現已在 AWS、Azure 和 Google Cloud 中提供升級。主控台將提示您將現有系統升級至此修補程式版本。
+
+link:https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab/download/62632/9.17.1P7["檢視 P7 修補程式中已修正的錯誤清單"^]（需要登入 NetApp Support Site）。
+
+
+
 [[9-17-1-p6-17-april-2026]]
 == 9.17.1 P6（2026 年 4 月 17 日）
 
